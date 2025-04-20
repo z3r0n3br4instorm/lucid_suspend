@@ -39,14 +39,14 @@ void* lid_thread(void* arg) {
 
     if (previous_lid_state == true) {
         info("Lid Opened !");
-        // system("sudo /usr/bin/nvidia-sleep.sh resume");
         wake_now();
-        // system("chvt 2");
+        system("sudo /usr/bin/nvidia-sleep.sh resume");
+        system("chvt 2");
         system("xset dpms force off && sleep 1 && xset dpms force on");
     } else {
         info("Lid Closed !");
-        // system("sudo /usr/bin/nvidia-sleep.sh suspend");
-        // system("chvt 1");
+        system("chvt 1");
+        system("sudo /usr/bin/nvidia-sleep.sh suspend");
         sleep_now();
     }
 
@@ -56,14 +56,14 @@ void* lid_thread(void* arg) {
         if (current_lid_state != previous_lid_state) {
             if (current_lid_state == true) {
                 info("Lid Opened !");
-                system("sudo /usr/bin/nvidia-sleep.sh resume");
                 wake_now();
+                system("sudo /usr/bin/nvidia-sleep.sh resume");
                 system("chvt 2");
                 system("xset dpms force off && sleep 1 && xset dpms force on");
             } else {
                 info("Lid Closed !");
-                system("sudo /usr/bin/nvidia-sleep.sh suspend");
                 system("chvt 1");
+                system("sudo /usr/bin/nvidia-sleep.sh suspend");
                 sleep_now();
             }
             previous_lid_state = current_lid_state;
