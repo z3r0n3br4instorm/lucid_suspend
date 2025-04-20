@@ -6,7 +6,8 @@ int sleep_now() {
     // SIGSTOP STUFF
     const char *excluded_services[] = {
         "ztos-core.service",
-        "sshd",
+        "sshd.service",
+        "auto-cpufreq.service"
         "nvidia-persistenced.service",
         "nvidia-powerd.service",
         "nvidia-hibernate.service",
@@ -18,7 +19,6 @@ int sleep_now() {
         "systemd-udevd.service",
         "systemd-logind.service",
         "systemd-timesyncd.service",
-        "dbus.service.service",
     };
     int num_excluded = sizeof(excluded_services) / sizeof(excluded_services[0]);
     FILE *fp;
