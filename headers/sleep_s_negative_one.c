@@ -19,6 +19,9 @@ int sleep_now() {
         "systemd-udevd.service",
         "systemd-logind.service",
         "systemd-timesyncd.service",
+        "btop",
+        "sshd",
+        "ssh"
     };
     int num_excluded = sizeof(excluded_services) / sizeof(excluded_services[0]);
     FILE *fp;
